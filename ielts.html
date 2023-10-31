@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<title>IELTS</title>
+			<link rel="stylesheet" href="style.css">
+			<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
+			<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+			<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+			<link rel="manifest" href="../assets/img/favicon/site.webmanifest">
+			<script src="https://kit.fontawesome.com/3e0a8fd511.js" crossorigin="anonymous"></script>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		</head>
+		<body>
+			<div class='ielts'>
+				<div class="overlay"></div>
+				<nav>
+					<input type="checkbox" id="check">
+					<label for="check" class="checkbtn">
+						<i class="fas fa-bars"></i>
+					</label>
+					<div class="logo-container">
+						<img src="assets/img/2.png" alt="logo">
+						<h1 class="logo"><a href="index.html">SWS</a></h1>
+					</div>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="igcse.html">IGCSE</a></li>
+						<li><a class="active" href="#">IELTS</a></li>
+						<li><a href="about_us.html">About Us</a></li>
+					</ul>
+				</nav>
+				<div class='container'>
+					<h1>IELTS</h1>
+					<h3>Dear future candidates, we offer IELTS training for both Academic and General Training in TWO different courses; Crash Course & Regular Course<br><br>Click to view Details:</h3>
+					<div class="courses">
+						<ul>
+							<li><a href="#" onclick="showCourseDetails('course1', event)">IELTS AC Crash Course</a></li>
+							<li><a href="#" onclick="showCourseDetails('course2', event)">IELTS GT Crash Course</a></li>
+							<li><a href="#" onclick="showCourseDetails('course3', event)">IELTS AC Regular Pack</a></li>
+							<li><a href="#" onclick="showCourseDetails('course4', event)">IELTS GT Regular Pack</a></li>
+							<li><a href="#" onclick="showCourseDetails('course5', event)">IELTS Individual Modules</a></li>
+						</ul>
+					</div>
+
+					<div class="course-details" id="course1">
+						<h2>AC Crash Course</h2>
+						<p>
+							This course is for students who want a fast-forward guidance towards the test wasting no time at all !!!
+							<br><br>
+							<span style="color: red">
+							- 30 days (14 classes)
+							<br>
+							- <span style="text-decoration: line-through">16,000 BDT</span> 15,000 BDT
+							</span>
+						</p>
+					</div>
+
+					<div class="course-details" id="course2">
+						<h2>Course 2 Details</h2>
+						<p>Description of Course 2.</p>
+					</div>
+
+					<div class="course-details" id="course3">
+						<h2>Course 3 Details</h2>
+						<p>Description of Course 3.</p>
+					</div>
+					
+					<div class="course-details" id="course4">
+						<h2>Course 4 Details</h2>
+						<p>Description of Course 4.</p>
+					</div>
+					
+					<div class="course-details" id="course5">
+						<h2>Course 5 Details</h2>
+						<p>Description of Course 5.</p>
+					</div>
+					
+					<div class="btn"><a href="payment.html" target="blank">Register</a></div>
+				</div>
+
+				<div class='footer'>
+					<p>&copy SWS 2023. All rights reserved.</p>
+				</div>
+				<script>
+					function showCourseDetails(courseId, event) {
+						event.preventDefault();
+
+						var courseDetails = document.querySelectorAll('.course-details');
+						courseDetails.forEach(function (course) {
+							course.style.display = 'none';
+						});
+
+						var selectedCourse = document.getElementById(courseId);
+						selectedCourse.style.display = 'block';
+
+						// Calculate the offset from the top of the page to the course details section
+						var offsetTop = selectedCourse.offsetTop;
+
+						// Scroll to the selected course details section
+						window.scrollTo({
+							top: offsetTop,
+							behavior: 'smooth'
+						});
+					}
+				</script>
+			<script src="assets/scripts/script.js"></script>
+		</body>
+	</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<title>Payment</title>
+			<link rel="stylesheet" href="style.css">
+			<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon_1/apple-touch-icon.png">
+			<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon_1/favicon-32x32.png">
+			<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon_1/favicon-16x16.png">
+			<link rel="manifest" href="../assets/img/favicon_1/site.webmanifest">
+			<script src="https://kit.fontawesome.com/3e0a8fd511.js" crossorigin="anonymous"></script>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		</head>
+		<body>
+			<div class='payment'>
+				<div class="overlay"></div>
+				<nav>
+					<input type="checkbox" id="check">
+					<label for="check" class="checkbtn">
+						<i class="fas fa-bars"></i>
+					</label>
+					<div class="logo-container">
+						<img src="assets/img/2.png" alt="logo">
+						<h1 class="logo"><a href="index.html">SWS</a></h1>
+					</div>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="igcse.html">IGCSE</a></li>
+						<li><a href="ielts.html">IELTS</a></li>
+						<li><a href="about_us.html">About Us</a></li>
+					</ul>
+				</nav>
+				<div class="pay_details_body">
+					<h1>Payment Form</h1>
+					<div class="img_section">
+						<img id="qrCodeImg" src="../assets/img/qr.png" alt="QR Code for Payment">
+					</div>
+					<div class="account_details">
+						<p>Type: Bkash Send Money</p>
+						<p>Phone Number: XXX-XXX-XXXX</p>
+					</div>
+
+					<form id="paymentForm">
+						<label for="fullName">Full Name:</label>
+						<input type="text" id="fullName" placeholder="Enter Your Full Name Here" name="fullName" required><br>
+
+						<label for="email">Email:</label>
+						<input type="email" id="email" placeholder="Your Email Address" name="email" required><br>
+
+						<label for="phone">Phone:</label>
+						<input type="tel" id="phone" placeholder="Your Phone Number" name="phone" required><br>
+
+						<label for="subjectChoice">Subject Choice:</label>
+						<select id="subjectChoice" name="subjectChoice" required>
+							<option value="course1">Biology (IGCSE) - 3000tk</option>
+							<option value="course2">Human Biology (IGCSE) - 3000tk</option>
+							<!-- more options as needed -->
+						</select><br>
+
+						<label for="confirmationNumber">Confirmation Number (Last 4 digits):</label>
+						<input type="number" id="confirmationNumber" placeholder="Confirmation Code" name="confirmationNumber" min="1000" max="9999" required><br>
+
+						<button type="submit">Submit</button>
+					</form>
+				</div>
+				<div class='footer'>
+					<p>&copy SWS 2023. All rights reserved.</p>
+				</div>
+			</div>
+			
+			<script src="assets/scripts/script.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"></script>
+
+			<script>
+				// Initialize Firebase with configuration
+				var firebaseConfig = {
+					apiKey: "YOUR_API_KEY",
+					authDomain: "YOUR_AUTH_DOMAIN",
+					databaseURL: "YOUR_DATABASE_URL",
+					projectId: "YOUR_PROJECT_ID",
+					storageBucket: "YOUR_STORAGE_BUCKET",
+					messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+					appId: "YOUR_APP_ID"
+				};
+				firebase.initializeApp(firebaseConfig);
+
+				// Reference to Firebase Realtime Database
+				var database = firebase.database();
+
+				// Handle form submission
+				document.getElementById('paymentForm').addEventListener('submit', function (e) {
+					e.preventDefault();
+
+					// Get form values
+					var fullName = document.getElementById('fullName').value;
+					var email = document.getElementById('email').value;
+					var phone = document.getElementById('phone').value;
+					var subjectChoice = document.getElementById('subjectChoice').value;
+					var confirmationNumber = document.getElementById('confirmationNumber').value;
+
+					// Push data to Firebase database
+					database.ref('payments').push({
+						fullName: fullName,
+						email: email,
+						phone: phone,
+						subjectChoice: subjectChoice,
+						confirmationNumber: confirmationNumber
+					});
+
+					// Reset form after submission
+					document.getElementById('paymentForm').reset();
+
+					// further logic like showing a success message to the user
+				});
+			</script>
+		</body>
+	</html>

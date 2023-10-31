@@ -1,0 +1,39 @@
+[
+  {
+    "title": "IGCSE",
+    "description": "They are your gateway to higher education or professional studies in your home country or overseas. They can help you: get a place at college or university at home or abroad. find better career opportunities.",
+    "offers": [
+      {
+        "subject": "Biology",
+        "length": "5 months",
+        "cost": "3000 BDT"
+      },
+      {
+        "subject": "Human Biology",
+        "length": "5 months",
+        "cost": "3500 BDT"
+      },
+      {
+        "subject": "Hooman Biology",
+        "length": "15 months",
+        "cost": "3500 BDT"
+      }
+    ]
+  },
+  {
+    "title": "IAL",
+    "description": "Pearson Edexcel International AS/A Levels (IAL) are globally recognised qualifications which open doors to top universities worldwide.",
+    "offers": [
+      {
+        "subject": "Biology",
+        "length": "6 months",
+        "cost": "4000 BDT"
+      },
+      {
+        "subject": "Chemistry",
+        "length": "7 months",
+        "cost": "4500 BDT"
+      }
+    ]
+  }
+]
