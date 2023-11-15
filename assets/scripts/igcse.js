@@ -1,6 +1,11 @@
 // Fetch course data from courses.json file
-fetch('../assets/json/courses.json')
-  .then(response => response.json())
+fetch('assets/json/courses.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
   .then(data => {
     // Get the container element where the course boxes should be appended
     const courseContainer = document.querySelector('.course_box');

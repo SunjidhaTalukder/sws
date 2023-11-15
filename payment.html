@@ -3,10 +3,10 @@
 		<head>
 			<title>Payment</title>
 			<link rel="stylesheet" href="style.css">
-			<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon_1/apple-touch-icon.png">
-			<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon_1/favicon-32x32.png">
-			<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon_1/favicon-16x16.png">
-			<link rel="manifest" href="../assets/img/favicon_1/site.webmanifest">
+			<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon_1/apple-touch-icon.png">
+			<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon_1/favicon-32x32.png">
+			<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon_1/favicon-16x16.png">
+			<link rel="manifest" href="assets/img/favicon_1/site.webmanifest">
 			<script src="https://kit.fontawesome.com/3e0a8fd511.js" crossorigin="anonymous"></script>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -33,7 +33,7 @@
 				<div class="pay_details_body">
 					<h1>Payment Form</h1>
 					<div class="img_section">
-						<img id="qrCodeImg" src="../assets/img/qr.png" alt="QR Code for Payment">
+						<img id="qrCodeImg" src="assets/img/qr.png" alt="QR Code for Payment">
 					</div>
 					<div class="account_details">
 						<p>Type: Bkash Send Money</p>
@@ -69,50 +69,50 @@
 			</div>
 			
 			<script src="assets/scripts/script.js"></script>
-			<script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-app.js"></script>
-			<script src="https://www.gstatic.com/firebasejs/9.2.0/firebase-database.js"></script>
-
 			<script>
-				// Initialize Firebase with configuration
-				var firebaseConfig = {
-					apiKey: "YOUR_API_KEY",
-					authDomain: "YOUR_AUTH_DOMAIN",
-					databaseURL: "YOUR_DATABASE_URL",
-					projectId: "YOUR_PROJECT_ID",
-					storageBucket: "YOUR_STORAGE_BUCKET",
-					messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-					appId: "YOUR_APP_ID"
+			  const paymentForm = document.getElementById("paymentForm");
+			  const submitButton = document.querySelector('button[type="submit"]');
+
+			  paymentForm.addEventListener("submit", async function (event) {
+				event.preventDefault();
+
+				const fullName = document.getElementById("fullName").value;
+				const email = document.getElementById("email").value;
+				const phone = document.getElementById("phone").value;
+				const subjectChoice = document.getElementById("subjectChoice").value;
+				const confirmationNumber = document.getElementById("confirmationNumber").value;
+
+				const data = {
+				  fullName,
+				  email,
+				  phone,
+				  subjectChoice,
+				  confirmationNumber
 				};
-				firebase.initializeApp(firebaseConfig);
 
-				// Reference to Firebase Realtime Database
-				var database = firebase.database();
+				const options = {
+				  method: 'POST',
+				  headers: {
+					'Content-Type': 'application/json',
+				  },
+				  body: JSON.stringify(data),
+				};
 
-				// Handle form submission
-				document.getElementById('paymentForm').addEventListener('submit', function (e) {
-					e.preventDefault();
+				try {
+				  const response = await fetch('https://sws1-ccf3c-default-rtdb.firebaseio.com/payments.json', options);
 
-					// Get form values
-					var fullName = document.getElementById('fullName').value;
-					var email = document.getElementById('email').value;
-					var phone = document.getElementById('phone').value;
-					var subjectChoice = document.getElementById('subjectChoice').value;
-					var confirmationNumber = document.getElementById('confirmationNumber').value;
-
-					// Push data to Firebase database
-					database.ref('payments').push({
-						fullName: fullName,
-						email: email,
-						phone: phone,
-						subjectChoice: subjectChoice,
-						confirmationNumber: confirmationNumber
-					});
-
-					// Reset form after submission
-					document.getElementById('paymentForm').reset();
-
-					// further logic like showing a success message to the user
-				});
+				  if (response.ok) {
+					alert('Payment Information Sent Successfully!');
+					document.querySelector('button[type="submit"]').textContent = 'Sent';
+					submitButton.disabled = true;
+				  } else {
+					alert('Error sending payment information. Please try again later.');
+				  }
+				} catch (error) {
+				  console.error('Error:', error);
+				  alert('Something went wrong, please try again later.');
+				}
+			  });
 			</script>
 		</body>
 	</html>

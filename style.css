@@ -692,6 +692,12 @@ nav ul a.active,a:hover{
     background-color: #b5ffff;
 }
 
+.payment .pay_details_body #paymentForm button:disabled{
+	background-color: green;
+	color: #fff;
+	cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
     .payment .pay_details_body {
         padding: 10px;
