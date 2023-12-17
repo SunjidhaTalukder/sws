@@ -11,9 +11,19 @@
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		</head>
-		<body>
-			<div class='about_us'>
+		<body class="about_us">
+			<div>
 				<div class="overlay"></div>
+				<div class="overlay1">
+					<div class="overlay-content">
+					  <h2>Member Details</h2>
+					  <ul class="member-details">
+						<li><strong>Name:</strong> <span id="member-name"></span></li>
+						<li><strong>Role:</strong> <span id="member-role"></span></li>
+						<li><strong>Additional Information:</strong> <span id="additional-info"></span></li>
+					  </ul>
+					</div>
+				</div>
 				<nav>
 					<input type="checkbox" id="check">
 					<label for="check" class="checkbtn">
@@ -32,16 +42,64 @@
 				</nav>
 				<div class="body">
 					<div class="story">
-					
+						<h1>About SWS</h1>
+						<p>Dear lazy learners, Welcome to my study room. If you are that lazy, sloth, sleeping koala of your class, who always try to find a short-cut to easy study solution,
+						THEN THIS IS THE PERFECT ZONE YOU ENTERED</p>
 					</div>
-					<div class="">
-					
+					<div class="team">
+						<div class="img-container">
+							<img src="assets/img/user.png" alt="Member 1">
+						</div>
+						<div class="content">
+							<h1>Shunjida Talukdar</h1>
+							<p>Dear lazy learners, Welcome to my study room. If you are that lazy, sloth, sleeping koala of your class, who always try to find a short-cut to easy study solution,THEN THIS IS THE PERFECT ZONE YOU ENTERED</p>
+							<button class="info-button" onclick="toggleOverlay('Shunjida Talukdar', 'Team Lead', 'Additional info: <ul>A - Levels <li>A Levels <li>Level A')">More Details</button>
+						</div>
 					</div>
-				</div>
-				<div class='footer'>
-					<p>&copy SWS 2023. All rights reserved.</p>
+					<div class="team">
+						<div class="img-container">
+							<img src="assets/img/user.png" alt="Member 2">
+						</div>
+						<div class="content">
+							<h1>Shahjahan Rahman</h1>
+							<p>Dear lazy learners, Welcome to my study room. If you are that lazy, sloth, sleeping koala of your class, who always try to find a short-cut to easy study solution,THEN THIS IS THE PERFECT ZONE YOU ENTERED</p>
+							<button class="info-button" onclick="toggleOverlay('Shahjahan Rahman', 'Developer', 'Additional info goes here including <h2>, <ul>, <li>, etc.')">More Details</button>
+						</div>
+					</div>
 				</div>
 			</div>
+			<div class='footer'>
+				<p>&copy SWS 2023. All rights reserved.</p>
+			</div>
+			<script>
+				function toggleOverlay(memberName, memberRole, additionalInfo) {
+				  const overlay = document.querySelector('.overlay1');
+				  const overlayContent = overlay.querySelector('.overlay-content');
+
+				  if (overlay && overlayContent) {
+					overlayContent.innerHTML = `
+					  <h1>${memberName}</h1>
+					  <h2>${memberRole}</h2>
+					  <p>${additionalInfo}</p>
+					  <ul>
+						<li></li>
+						<li></li>
+						<!-- Add more list items if needed -->
+					  </ul>
+					`;
+
+					const closeButton = document.createElement('button');
+					closeButton.className = 'close-button';
+					closeButton.textContent = 'Close';
+					closeButton.addEventListener('click', () => {
+					  overlay.classList.remove('show');
+					});
+
+					overlayContent.appendChild(closeButton);
+					overlay.classList.toggle('show');
+				  }
+				}
+			</script>
 			<script src="assets/scripts/script.js"></script>
 		</body>
 	</html>

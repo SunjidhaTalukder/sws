@@ -171,7 +171,7 @@ nav ul a.active,a:hover{
 	display: flex;
 	padding: 20px;
 	margin: 30px 70px;
-	background: #ffffff;
+	background: #f2ebf1;
 	border-radius: 15px;
 	justify-content: space-between;
 	align-items: center;
@@ -708,3 +708,176 @@ nav ul a.active,a:hover{
     }
 }
 /*payment ends here*/
+
+/*about us*/
+.about_us{
+	background: linear-gradient(68.6deg, rgb(252, 165, 241) 1.8%, rgb(181, 255, 255) 100.5%);
+}
+
+.about_us .body{
+	margin: 0 40px;
+}
+
+.about_us .body .story{
+    max-width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 50px;
+    background: linear-gradient(68.6deg, rgb(181, 255, 255) 10.8%, rgb(252, 165, 241) 100.5%);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    text-align: center;
+	transform: scale(1);
+	transition: transform 0.5s ease;
+}
+
+.about_us .body .story:hover{
+	transform: scale(1.02);
+}
+
+.about_us .body .story h1{
+	margin-bottom: 20px;
+}
+
+.about_us .body .team{
+	display: flex;
+	align-items: center;
+	max-width: 1000px;
+	padding: 50px 10px;
+	border-radius: 20px;
+	background: #bee0e6;
+	margin: 40px auto;
+}
+
+.about_us .body .team .img-container{
+	justify-content: left;
+	width: 50%;
+	margin-left: 50px;
+}
+
+.about_us .body .team .img-container img{
+	width: 50%;
+}
+
+.about_us .body .team .content{
+	justify-content: right;
+	max-width: 70%;
+}
+
+.about_us .body .team .content h1{
+	margin-bottom: 15px;
+}
+
+.about_us .body .team .content .info-button{
+	margin-top: 15px;
+	padding: 5px;
+	border-radius: 10px;
+	transition: 0.5s;
+}
+
+.about_us .body .team .content .info-button:hover{
+	background: rgb(252, 165, 241);
+}
+
+.about_us .overlay1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.about_us .overlay1.show {
+  display: flex;
+}
+
+.about_us .overlay-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.about_us .overlay-content h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.about_us .overlay-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.about_us .overlay-content p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.about_us .overlay-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about_us .overlay-content li {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.about_us .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: red;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+@media (max-width: 700px) {
+	.about_us .body .team{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	.about_us .body .team .img-container{
+		justify-content: center;
+		width: 50%;
+		margin: 5px auto;
+	}
+
+	.about_us .body .team .img-container img{
+		width: 50%;
+	}
+
+	.about_us .body .team .content{
+		justify-content: center;
+	}
+
+	.about_us .overlay-content {
+	  max-width: 85%;
+	}
+}
+
+@media (max-width: 360px){
+	.about_us .story h1{
+		font-size: 22px;
+	}
+	.about_us .body .team .content h1{
+		font-size: 22px;
+	}
+}
